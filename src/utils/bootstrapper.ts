@@ -1,6 +1,6 @@
-import type { Container } from "@/core/Container";
-import { Router } from "@/core/Router";
-import { loadModules } from "@/utils/loadModule";
+import {loadModules} from "./loadModule";
+import type {Container} from "../core/Container";
+import {Router} from "../core/Router";
 
 export async function bootstrapApplication(
 	container: Container,

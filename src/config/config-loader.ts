@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { mergeDeep } from "@/utils/object-utils";
+import fs from "node:fs";
+import path from "node:path";
+import { mergeDeep } from "../utils/object-utils";
 import yaml from "js-yaml";
 
 export interface ReysinConfig {

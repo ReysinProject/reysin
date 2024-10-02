@@ -1,5 +1,5 @@
-import { Container } from "@/core/Container";
-import { bootstrapApplication } from "@/utils/bootstrapper";
+import {Container} from "./Container";
+import {bootstrapApplication} from "../utils/bootstrapper";
 
 export class Application {
 	private readonly container: Container;

@@ -11,9 +11,6 @@
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
