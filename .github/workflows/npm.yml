@@ -10,39 +10,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '22'  # ou la version de Node.js que tu utilises
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: pnpm install
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
 
     # - name: Run tests
     #   run: pnpm test
 
-    - name: Build the project
-      run: pnpm build
+      - name: Build the project
+        run: pnpm build
 
-    - name: Bump version and generate changelog
-      id: versioning
-      run: |
-        npx standard-version --no-verify
-        git push --follow-tags origin main
+      - name: Bump version and generate changelog
+        id: versioning
+        run: |
+          npx standard-version --no-verify
+          git push --follow-tags origin main
 
-    - name: Commit changes
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "chore(release): bump version"
-        git push origin main
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore(release): bump version"
+          git push origin main
 
-    - name: Publish to npm
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
