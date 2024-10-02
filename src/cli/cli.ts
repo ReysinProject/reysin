@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import {startDevServer} from "@/cli/dev-server";
-import {buildApp} from "@/cli/build";
+import {startDevServer} from "./dev-server";
+import {buildApp} from "./build";
 
 const program = new Command();
 
