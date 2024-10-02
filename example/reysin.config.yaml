@@ -1,0 +1,15 @@
+app:
+  title: "MVVM Framework Example"
+  description: "Modular MVVM Framework Example"
+  rootElement: "root"
+
+vite:
+  port: 3000
+  base: "/"
+  outDir: "dist"
+  assetsDir: "assets"
+
+framework:
+  apps:
+    - test
+  apiPath: "/src/api"

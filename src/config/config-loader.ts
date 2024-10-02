@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
-import { mergeDeep } from '@/utils/object-utils';
+import fs from "fs";
+import path from "path";
+import { mergeDeep } from "@/utils/object-utils";
+import yaml from "js-yaml";
 
 export interface ReysinConfig {
 	app: {
@@ -24,24 +24,24 @@ const defaultConfig: ReysinConfig = {
 	app: {
 		title: "MVVM App",
 		description: "Built with MVVM Framework",
-		rootElement: "root"
+		rootElement: "root",
 	},
 	vite: {
 		port: 3000,
 		base: "/",
 		outDir: "dist",
-		assetsDir: "assets"
+		assetsDir: "assets",
 	},
 	framework: {
-		appPath: "/src/apps"
-	}
+		appPath: "/src/apps",
+	},
 };
 
 export function loadConfig(): ReysinConfig {
-	const configPath = path.resolve(process.cwd(), 'reysin.config.yaml');
+	const configPath = path.resolve(process.cwd(), "reysin.config.yaml");
 
 	if (fs.existsSync(configPath)) {
-		const fileContents = fs.readFileSync(configPath, 'utf8');
+		const fileContents = fs.readFileSync(configPath, "utf8");
 		const userConfig = yaml.load(fileContents) as Partial<ReysinConfig>;
 		return mergeDeep(defaultConfig, userConfig) as ReysinConfig;
 	}

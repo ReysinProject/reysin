@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import fs from "node:fs/promises";
+import path from "node:path";
 
 export async function loadModules(dir: string): Promise<any[]> {
 	const modules: any[] = [];
@@ -9,7 +9,7 @@ export async function loadModules(dir: string): Promise<any[]> {
 		const fullPath = path.join(dir, file.name);
 
 		if (file.isDirectory()) {
-			modules.push(...await loadModules(fullPath));
+			modules.push(...(await loadModules(fullPath)));
 		} else if (file.isFile() && /\.(ts|js)$/.test(file.name)) {
 			const module = await import(fullPath);
 			modules.push(...Object.values(module));

@@ -1,5 +1,5 @@
-import {bootstrapApplication} from "@/utils/bootstrapper";
-import {Container} from "@/core/Container";
+import { Container } from "@/core/Container";
+import { bootstrapApplication } from "@/utils/bootstrapper";
 
 export class Application {
 	private readonly container: Container;
@@ -17,6 +17,6 @@ export class Application {
 	}
 
 	start(): void {
-		console.log('Application started');
+		console.log("Application started");
 	}
 }

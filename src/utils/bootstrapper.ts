@@ -1,24 +1,27 @@
-import { Container } from "@/core/Container";
-import { loadModules } from "@/utils/loadModule";
+import type { Container } from "@/core/Container";
 import { Router } from "@/core/Router";
+import { loadModules } from "@/utils/loadModule";
 
-export async function bootstrapApplication(container: Container, appPath: string): Promise<void> {
+export async function bootstrapApplication(
+	container: Container,
+	appPath: string,
+): Promise<void> {
 	const modules = await loadModules(appPath);
 
 	for (const module of modules) {
-		const isInjectable = Reflect.getMetadata('custom:injectable', module);
+		const isInjectable = Reflect.getMetadata("custom:injectable", module);
 		if (isInjectable) {
-			const scope = Reflect.getMetadata('custom:scope', module) || 'transient';
+			const scope = Reflect.getMetadata("custom:scope", module) || "transient";
 			const binding = container.bind<any>(module);
 
-			if (scope === 'singleton') {
+			if (scope === "singleton") {
 				binding.to(module).inSingletonScope();
 			} else {
 				binding.to(module).inTransientScope();
 			}
 		}
 
-		const routePath = Reflect.getMetadata('custom:route', module);
+		const routePath = Reflect.getMetadata("custom:route", module);
 		if (routePath) {
 			container.get<Router>(Router).addRoute(routePath, module);
 		}

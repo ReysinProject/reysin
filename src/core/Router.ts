@@ -1,4 +1,4 @@
-import { Container } from './Container';
+import type { Container } from "./Container";
 
 export class Router {
 	private routes: Map<string, any> = new Map();

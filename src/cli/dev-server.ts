@@ -1,5 +1,5 @@
-import { createServer, ViteDevServer } from 'vite';
-import { loadConfig, ReysinConfig } from "@/config/config-loader";
+import { type ReysinConfig, loadConfig } from "@/config/config-loader";
+import { type ViteDevServer, createServer } from "vite";
 
 export async function startDevServer(): Promise<void> {
 	const config: ReysinConfig = loadConfig();
@@ -23,7 +23,7 @@ export async function startDevServer(): Promise<void> {
 		await server.listen();
 		console.log(`Dev server running at http://localhost:${config.vite.port}`);
 	} catch (error) {
-		console.error('Failed to start dev server:', error);
+		console.error("Failed to start dev server:", error);
 		process.exit(1);
 	}
 }

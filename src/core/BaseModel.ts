@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable } from "mobx";
+import { z } from "zod";
 
 export abstract class BaseModel<T extends z.ZodType> {
 	protected schema: T;
@@ -46,8 +46,10 @@ export abstract class BaseModel<T extends z.ZodType> {
 	}
 
 	public static fromJSON<M extends BaseModel<any>>(
-		this: new (schema: any) => M,
-		data: any
+		this: new (
+			schema: any,
+		) => M,
+		data: any,
 	): M {
 		const instance = new this(z.any());
 		instance.update(data);
@@ -58,7 +60,10 @@ export abstract class BaseModel<T extends z.ZodType> {
 		return this.data[key];
 	}
 
-	protected set<K extends keyof z.infer<T>>(key: K, value: z.infer<T>[K]): void {
+	protected set<K extends keyof z.infer<T>>(
+		key: K,
+		value: z.infer<T>[K],
+	): void {
 		this.update({ [key]: value } as Partial<z.infer<T>>);
 	}
 }

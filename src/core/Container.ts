@@ -1,4 +1,4 @@
-import { Container as InversifyContainer, interfaces } from 'inversify';
+import { Container as InversifyContainer, type interfaces } from "inversify";
 
 export class Container {
 	private container: InversifyContainer;
@@ -7,7 +7,9 @@ export class Container {
 		this.container = new InversifyContainer();
 	}
 
-	bind<T>(serviceIdentifier: interfaces.ServiceIdentifier<T>): interfaces.BindingToSyntax<T> {
+	bind<T>(
+		serviceIdentifier: interfaces.ServiceIdentifier<T>,
+	): interfaces.BindingToSyntax<T> {
 		return this.container.bind<T>(serviceIdentifier);
 	}
 
