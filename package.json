@@ -1,8 +1,10 @@
 {
   "name": "@reysin/project",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
