@@ -30,10 +30,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Uncomment when you have tests
-      # - name: Run tests
-      #   run: pnpm test
-
       - name: Build the project
         run: pnpm build
 
@@ -52,6 +48,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Publish to npm
-        run: npm publish
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            npm config set access public
+            npm publish --access public
+          else
+            echo "Skipping npm publish. Not on main branch."
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
