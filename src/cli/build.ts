@@ -1,5 +1,5 @@
 import { build } from "vite";
-import {loadConfig} from "../utils/config-loader";
+import {loadConfig} from "../config/config-loader";
 
 export async function buildApp() {
 	const config = loadConfig();
