@@ -32,12 +32,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           npx standard-version --no-verify
+          git push --follow-tags origin main
 
       - name: Commit changes
         run: |
+          git pull origin main
           git add .
           git commit -m "chore(release): bump version"
-          git push --follow-tags origin main
+          git push origin main
 
       - name: Publish to npm
         run: npm publish
