@@ -29,8 +29,8 @@ jobs:
       - name: Bump version and generate changelog
         id: versioning
         run: |
-          git config user.name "CI/CD"
-          git config user.email "cicd@github.com"
+          git config user.name "YourName"
+          git config user.email "your-email@example.com"
           npx standard-version --no-verify
 
       - name: Commit changes
