@@ -8,15 +8,6 @@ importers:
 
   .:
     dependencies:
-      inversify:
-        specifier: ^6.0.1
-        version: 6.0.2
-      mobx:
-        specifier: ^6.9.0
-        version: 6.13.3
-      mobx-react-lite:
-        specifier: ^3.4.3
-        version: 3.4.3(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -26,15 +17,9 @@ importers:
       react-router-dom:
         specifier: ^6.10.0
         version: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      reflect-metadata:
-        specifier: ^0.1.13
-        version: 0.1.14
       reysin:
         specifier: github:ReysinProject/reysin#main
         version: '@reysin/project@https://codeload.github.com/ReysinProject/reysin/tar.gz/2ac02b5b8d05e67cfdf6eab4f8a00b39490caee7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)'
-      zod:
-        specifier: ^3.21.4
-        version: 3.23.8
     devDependencies:
       '@types/jest':
         specifier: ^29.5.0

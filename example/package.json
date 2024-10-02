@@ -12,12 +12,7 @@
     "reysin": "github:ReysinProject/reysin#main",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
-    "mobx": "^6.9.0",
-    "mobx-react-lite": "^3.4.3",
-    "inversify": "^6.0.1",
-    "reflect-metadata": "^0.1.13",
-    "zod": "^3.21.4"
+    "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
