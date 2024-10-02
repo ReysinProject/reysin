@@ -1,4 +1,4 @@
-import { injectable } from "./injectable";
+import {injectable} from "./injectable.js";
 
 export function singleton() {
 	return (target: any) => {

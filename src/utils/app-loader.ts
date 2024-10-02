@@ -1,4 +1,4 @@
-import { Application } from "../core/Application";
+import {Application} from "../core/Application.js";
 
 export async function loadApps(appNames: string[]): Promise<Application[]> {
 	const apps: Application[] = [];

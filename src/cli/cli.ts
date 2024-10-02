@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import {startDevServer} from "./dev-server";
 import { Command } from 'commander';
-import {buildApp} from "./build";
+import {startDevServer} from "./dev-server.js";
+import {buildApp} from "./build.js";
 
 const program = new Command();
 
@@ -29,5 +29,4 @@ program
 		}
 	});
 
-
-program.parse(process.argv);
+export default program;

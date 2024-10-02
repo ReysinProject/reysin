@@ -1,5 +1,5 @@
-import {Container} from "./Container";
-import {bootstrapApplication} from "../utils/bootstrapper";
+import {Container} from "./Container.js";
+import {bootstrapApplication} from "../utils/bootstrapper.js";
 
 export class Application {
 	private readonly container: Container;

@@ -1,4 +1,4 @@
-import { injectable } from "./injectable";
+import {injectable} from "./injectable.js";
 
 export function transient() {
 	return (target: any) => {
