@@ -55,6 +55,7 @@ export class Reysin {
 		if (!this.rootElement) {
 			throw new Error('Root element not found. Make sure the framework is properly initialized.');
 		}
+		console.log(this.container)
 
 		const root = createRoot(this.rootElement);
 		root.render(this.children);
