@@ -1,7 +1,6 @@
-import type {AppContainer} from "../core/AppContainer.js";
-import {loadModules} from "./loadModule.js";
-import {Router} from "../core/Router.js";
-
+import type { AppContainer } from "../core/AppContainer.js";
+import { loadModules } from "./loadModule.js";
+import { Router } from "../core/Router.js";
 
 export async function bootstrapApplication(
 	container: AppContainer,

@@ -1,18 +1,13 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-
-export async function loadModules(dir: string): Promise<any[]> {
+export async function loadModules(appPath: string): Promise<any[]> {
 	const modules: any[] = [];
-	const files = await fs.readdir(dir, { withFileTypes: true });
+	const moduleFiles = import.meta.glob('/src/apps/**/*.ts', { eager: false });
 
-	for (const file of files) {
-		const fullPath = path.join(dir, file.name);
-
-		if (file.isDirectory()) {
-			modules.push(...(await loadModules(fullPath)));
-		} else if (file.isFile() && /\.(ts|js)$/.test(file.name)) {
-			const module = await import(fullPath);
-			modules.push(...Object.values(module));
+	for (const path in moduleFiles) {
+		if (path.startsWith(appPath)) {
+			const module = await moduleFiles[path]();
+			if (typeof module === 'object' && module !== null) {
+				modules.push(...Object.values(module));
+			}
 		}
 	}
 
