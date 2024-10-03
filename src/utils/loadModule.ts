@@ -14,7 +14,9 @@ export function isModuleType(obj: unknown): obj is ModuleType {
 
 export async function loadModules(appPath: string): Promise<ModuleType[]> {
 	const modules: ModuleType[] = [];
-	const moduleFiles = import.meta.glob("/src/apps/**/*.ts", { eager: false });
+	const moduleFiles = import.meta.glob("/src/apps/**/*.{ts,tsx}", {
+		eager: false,
+	});
 
 	for (const path in moduleFiles) {
 		if (path.startsWith(appPath)) {
