@@ -19,7 +19,7 @@ export async function loadModules(appPath: string): Promise<ModuleType[]> {
 	});
 
 	for (const path in moduleFiles) {
-		if (path.startsWith(appPath) || path.includes("/routes/")) {
+		if (path.startsWith(appPath)) {
 			const module = await moduleFiles[path]();
 			if (typeof module === "object" && module !== null) {
 				const moduleValues = Object.values(module).filter(isModuleType);
