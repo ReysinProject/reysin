@@ -3,7 +3,6 @@ import { bootstrapApplication } from "../utils/bootstrapper.js";
 import type { ReactNode } from "react";
 import { createRoot } from 'react-dom/client';
 import { loadConfigBrowser, type ReysinConfig } from "../config/config-loader.js";
-import type {Container} from "inversify";
 
 export class Reysin {
 	private readonly container: AppContainer;
@@ -11,10 +10,10 @@ export class Reysin {
 	private rootElement: HTMLElement | null = null;
 	private readonly children: ReactNode;
 
-	constructor(childrenCallback: (container: Container) => ReactNode) {
+	constructor(childrenCallback: (container: AppContainer) => ReactNode) {
 		console.log('Reysin framework initializing');
 		this.container = new AppContainer();
-		this.children = childrenCallback(this.container.container);
+		this.children = childrenCallback(this.container);
 		this.init().then(() => {
 			console.log('Reysin framework initialized and rendered');
 		});
