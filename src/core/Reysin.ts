@@ -1,16 +1,16 @@
-import {Container} from "./Container.js";
+import {AppContainer} from "./AppContainer.js";
 import {bootstrapApplication} from "../utils/bootstrapper.js";
 import type {ReactNode} from "react";
 import { createRoot } from 'react-dom/client';
 import {loadConfig, type ReysinConfig} from "../config/config-loader.js";
 
 export class Reysin {
-	private container: Container;
+	private container: AppContainer;
 	private config: ReysinConfig
 
 	constructor() {
 		console.log('Reysin framework initialized');
-		this.container = new Container();
+		this.container = new AppContainer();
 		this.config = loadConfig();
 		this.bootstrap()
 	}

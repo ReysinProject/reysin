@@ -1,7 +1,7 @@
 import cli from "./cli/cli.js";
 
 export { Application } from "./core/Application.js";
-export { Container } from "./core/Container.js";
+export { AppContainer } from "./core/AppContainer.js";
 export { BaseViewModel } from "./core/BaseViewModel.js";
 export { BaseService } from "./core/BaseService.js";
 export { BaseModel } from "./core/BaseModel.js";

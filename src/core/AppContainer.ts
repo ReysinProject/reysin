@@ -1,6 +1,6 @@
 import { Container as InversifyContainer, type interfaces } from "inversify";
 
-export class Container {
+export class AppContainer {
 	private container: InversifyContainer;
 
 	constructor() {

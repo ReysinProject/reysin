@@ -1,10 +1,10 @@
-import type {Container} from "../core/Container.js";
+import type {AppContainer} from "../core/AppContainer.js";
 import {loadModules} from "./loadModule.js";
 import {Router} from "../core/Router.js";
 
 
 export async function bootstrapApplication(
-	container: Container,
+	container: AppContainer,
 	appPath: string,
 ): Promise<void> {
 	const modules = await loadModules(appPath);

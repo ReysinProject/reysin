@@ -1,10 +1,10 @@
-import type {Container} from "./Container.js";
+import type {AppContainer} from "./AppContainer.js";
 
 export class Router {
 	private routes: Map<string, any> = new Map();
 	// private container: Container;
 
-	constructor(_container: Container) {
+	constructor(_container: AppContainer) {
 		// this.container = container;
 	}
 
