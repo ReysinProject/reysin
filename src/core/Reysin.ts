@@ -7,6 +7,7 @@ import {
 } from "../config/config-loader.js";
 import { bootstrapApplication } from "../utils/bootstrapper.js";
 import { AppContainer } from "./AppContainer.js";
+import { Router } from "./Router.js";
 
 export class Reysin {
 	private readonly container: AppContainer;
@@ -50,6 +51,10 @@ export class Reysin {
 			throw new Error("Configuration not loaded");
 		}
 		console.log("Reysin framework bootstrapping");
+		this.container
+			.bind<ReysinConfig>("ReysinConfig")
+			.toConstantValue(this.config);
+		this.container.bind<Router>("Router").to(Router).inSingletonScope();
 		await bootstrapApplication(this.container, this.config.framework.appPath);
 		console.log("Reysin framework bootstrapped");
 
