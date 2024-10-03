@@ -1,5 +1,6 @@
 import type { AppContainer } from "../core/AppContainer.js";
 import { Router } from "../core/Router.js";
+import type { RouteDefinition } from "../types/RouteDefinition.js";
 import { loadModules } from "./loadModule.js";
 
 type Scope = "singleton" | "transient";
@@ -13,6 +14,7 @@ export async function bootstrapApplication(
 	appPath: string,
 ): Promise<void> {
 	const modules = await loadModules(appPath);
+	const router = container.get<Router>(Router);
 
 	for (const module of modules) {
 		const isInjectable = getMetadata<boolean>("custom:injectable", module);
@@ -27,9 +29,15 @@ export async function bootstrapApplication(
 			}
 		}
 
-		const routePath = getMetadata<string>("custom:route", module);
-		if (routePath) {
-			container.get<Router>(Router).addRoute(routePath, module);
+		const isRoutable = getMetadata<boolean>("custom:routable", module);
+		if (isRoutable) {
+			const routeDefinition = getMetadata<RouteDefinition>(
+				"custom:route",
+				module,
+			);
+			if (routeDefinition) {
+				router.addRoute(routeDefinition.path, module, routeDefinition);
+			}
 		}
 	}
 }
