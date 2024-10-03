@@ -2,7 +2,6 @@ import { Provider } from "inversify-react";
 import React, { type FC } from "react";
 // import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import type { AppContainer } from "../core/AppContainer.js";
-import type { Application } from "../core/Application.js";
 import { Router } from "../core/Router.js";
 // import type { RouteDefinition } from "../types/RouteDefinition.js";
 

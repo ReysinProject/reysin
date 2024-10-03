@@ -54,7 +54,7 @@ export class Reysin {
 		this.container
 			.bind<ReysinConfig>("ReysinConfig")
 			.toConstantValue(this.config);
-		this.container.bind<Router>("Router").to(Router).inSingletonScope();
+		this.container.bind<Router>(Router).to(Router).inSingletonScope();
 		await bootstrapApplication(this.container, this.config.framework.appPath);
 		console.log("Reysin framework bootstrapped");
 
