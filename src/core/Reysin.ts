@@ -8,9 +8,12 @@ export class Reysin {
 	private container: AppContainer;
 	private config: ReysinConfig | null = null;
 
-	constructor() {
+	constructor(children: ReactNode) {
 		console.log('Reysin framework initializing');
 		this.container = new AppContainer();
+		this.initialize().then(( ) => {
+			this.render(children)
+		})
 	}
 
 	async initialize(): Promise<void> {
