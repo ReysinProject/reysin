@@ -1,6 +1,7 @@
 import { AppContainer } from "./AppContainer.js";
 import { bootstrapApplication } from "../utils/bootstrapper.js";
-import type { ReactNode } from "react";
+import type React from "react";
+import type {ReactNode} from "react";
 import { createRoot } from 'react-dom/client';
 import { loadConfigBrowser, type ReysinConfig } from "../config/config-loader.js";
 
@@ -10,7 +11,7 @@ export class Reysin {
 	private rootElement: HTMLElement | null = null;
 	private readonly children: ReactNode;
 
-	constructor(childrenCallback: (container: AppContainer) => ReactNode) {
+	constructor(childrenCallback: (container: AppContainer) => React.JSX.Element) {
 		console.log('Reysin framework initializing');
 		this.container = new AppContainer();
 		this.children = childrenCallback(this.container);
