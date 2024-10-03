@@ -8,7 +8,6 @@ import { Router } from "../core/Router.js";
 
 interface ReysinAppProps {
 	container: AppContainer;
-	apps: Application[];
 }
 // const RouteMetaUpdater: FC<ReysinAppProps> = ({ container }) => {
 // 	const location = useLocation();
