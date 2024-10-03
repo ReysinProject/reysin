@@ -26,7 +26,7 @@ export const ReysinApp: FC<ReysinAppProps> = ({ container }) => {
 	const routes = router.getRoutes();
 
 	console.log(routes);
-	console.log(router);
+	console.log(router.getRoutes());
 
 	return (
 		<Provider container={container.container}>
