@@ -8,6 +8,7 @@ export class AppLoader {
 	constructor(private container: Container, private config: ReysinConfig) {}
 
 	async loadApps(): Promise<void> {
+		console.log(this.config)
 		const appModules = this.config.framework.apps.map((importApp) => import(`../apps/${importApp}/index.js`));
 
 		for (const importApp of appModules) {
