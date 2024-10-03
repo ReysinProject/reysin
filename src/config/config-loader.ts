@@ -50,9 +50,9 @@ export function loadConfig(): ReysinConfig {
 	return defaultConfig;
 }
 
-const configFiles = import.meta.glob("/reysin.config.yaml", {query: "?raw"});
-
 export async function loadConfigBrowser(): Promise<ReysinConfig> {
+	const configFiles = import.meta.glob("/reysin.config.yaml", {query: "?raw"})
+
 	try {
 		const configModule = Object.values(configFiles)[0];
 		if (!configModule) {
