@@ -29,15 +29,17 @@ export async function bootstrapApplication(
 			}
 		}
 
-		const isRoutable = getMetadata<boolean>("custom:routable", module);
-		if (isRoutable) {
-			const routeDefinition = getMetadata<RouteDefinition>(
-				"custom:route",
-				module,
+		const routeDefinition = getMetadata<RouteDefinition>(
+			"custom:route",
+			module,
+		);
+		console.log(routeDefinition);
+		if (routeDefinition) {
+			router.addRoute(
+				routeDefinition.path,
+				routeDefinition.render,
+				routeDefinition,
 			);
-			if (routeDefinition) {
-				router.addRoute(routeDefinition.path, module, routeDefinition);
-			}
 		}
 	}
 }

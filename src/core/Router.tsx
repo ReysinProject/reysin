@@ -3,7 +3,6 @@ import React from "react";
 import type { ComponentType, FC, ReactElement, ReactNode } from "react";
 import type { RouteObject } from "react-router-dom";
 import type { RouteDefinition } from "../types/RouteDefinition.js";
-import type { ModuleType } from "../utils/loadModule.js";
 
 export interface LayoutProps {
 	children: ReactNode;
@@ -15,15 +14,14 @@ export class Router {
 
 	addRoute(
 		path: string,
-		Module: ModuleType,
+		Module: ComponentType,
 		definition: RouteDefinition,
 	): void {
 		console.log(path);
 		console.log(Module);
 		console.log(definition);
 		const ComponentWrapper: FC = () => {
-			const ModuleComponent = Module.render as unknown as ComponentType;
-			return <ModuleComponent />;
+			return <Module />;
 		};
 
 		const routeObject: RouteObject = {

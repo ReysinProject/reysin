@@ -6,4 +6,5 @@ export interface RouteDefinition {
 	path: string;
 	meta?: RouteMeta;
 	layout?: ComponentType<LayoutProps>;
+	render: ComponentType;
 }
