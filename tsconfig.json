@@ -22,7 +22,8 @@
     "noFallthroughCasesInSwitch": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "jsx": "react"
   },
   "include": [
     "src/**/*"

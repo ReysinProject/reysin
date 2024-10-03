@@ -1,7 +1,7 @@
 import { Container as InversifyContainer, type interfaces } from "inversify";
 
 export class AppContainer {
-	private container: InversifyContainer;
+	container: InversifyContainer;
 
 	constructor() {
 		this.container = new InversifyContainer();

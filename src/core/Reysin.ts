@@ -3,18 +3,21 @@ import { bootstrapApplication } from "../utils/bootstrapper.js";
 import type { ReactNode } from "react";
 import { createRoot } from 'react-dom/client';
 import { loadConfigBrowser, type ReysinConfig } from "../config/config-loader.js";
+import type {Container} from "inversify";
 
 export class Reysin {
-	private container: AppContainer;
+	private readonly container: AppContainer;
 	private config: ReysinConfig | null = null;
 	private rootElement: HTMLElement | null = null;
-	private children: ReactNode;
+	private readonly children: ReactNode;
 
-	constructor(children: ReactNode) {
+	constructor(childrenCallback: (container: Container) => ReactNode) {
 		console.log('Reysin framework initializing');
 		this.container = new AppContainer();
-		this.children = children;
-		this.init();
+		this.children = childrenCallback(this.container.container);
+		this.init().then(() => {
+			console.log('Reysin framework initialized and rendered');
+		});
 	}
 
 	private async init(): Promise<void> {
@@ -55,7 +58,6 @@ export class Reysin {
 		if (!this.rootElement) {
 			throw new Error('Root element not found. Make sure the framework is properly initialized.');
 		}
-		console.log(this.container)
 
 		const root = createRoot(this.rootElement);
 		root.render(this.children);
