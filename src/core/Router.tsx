@@ -18,6 +18,9 @@ export class Router {
 		Module: ModuleType,
 		definition: RouteDefinition,
 	): void {
+		console.log(path);
+		console.log(Module);
+		console.log(definition);
 		const ComponentWrapper: FC = () => {
 			const ModuleComponent = Module as unknown as ComponentType;
 			return <ModuleComponent />;
