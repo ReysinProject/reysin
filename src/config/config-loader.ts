@@ -50,7 +50,7 @@ export function loadConfig(): ReysinConfig {
 	return defaultConfig;
 }
 
-const configFiles = import.meta.glob("/reysin.config.yaml", { as: "raw" });
+const configFiles = import.meta.glob("/reysin.config.yaml", {query: "?raw"});
 
 export async function loadConfigBrowser(): Promise<ReysinConfig> {
 	try {
@@ -59,7 +59,7 @@ export async function loadConfigBrowser(): Promise<ReysinConfig> {
 			throw new Error("Config file not found");
 		}
 		const yamlText = await configModule();
-		const userConfig = yaml.load(yamlText) as Partial<ReysinConfig>;
+		const userConfig = yaml.load(yamlText as string) as Partial<ReysinConfig>;
 		return { ...defaultConfig, ...userConfig };
 	} catch (error) {
 		console.warn("Failed to load config file, using default config:", error);

@@ -8,6 +8,9 @@ interface ReysinAppProps {
 }
 
 export const ReysinApp: FC<ReysinAppProps> = ({ container }) => {
+	console.log("Rendering ReysinApp with container: ", container.container.id)
+	console.log(container)
+
 	return (
 		<Provider container={container.container}>
 			<p>NOW ADD ROUTES</p>
