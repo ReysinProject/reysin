@@ -1,22 +1,9 @@
-import {Container} from "./Container.js";
-import {bootstrapApplication} from "../utils/bootstrapper.js";
+import type { RouteObject } from "react-router-dom";
+import type {Container} from "inversify";
+import type React from "react";
 
-export class Application {
-	private readonly container: Container;
-
-	constructor() {
-		this.container = new Container();
-	}
-
-	async bootstrap(appPath: string): Promise<void> {
-		await bootstrapApplication(this.container, appPath);
-	}
-
-	getContainer(): Container {
-		return this.container;
-	}
-
-	start(): void {
-		console.log("Application started");
-	}
+export abstract class Application {
+	abstract configure(container: Container): Promise<void>;
+	abstract getRoutes(): RouteObject[];
+	abstract getLayout(): React.ComponentType<{ children: React.ReactNode }>;
 }

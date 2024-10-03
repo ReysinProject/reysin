@@ -6,6 +6,7 @@ export { Container } from "./core/Container.js";
 export { BaseViewModel } from "./core/BaseViewModel.js";
 export { BaseService } from "./core/BaseService.js";
 export { BaseModel } from "./core/BaseModel.js";
+export { AppLoader } from "./core/AppLoader.js";
 export { injectable } from "./decorators/injectable.js";
 export { singleton } from "./decorators/singleton.js";
 export { transient } from "./decorators/transient.js";
