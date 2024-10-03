@@ -2,7 +2,7 @@ import { AppContainer } from "./AppContainer.js";
 import { bootstrapApplication } from "../utils/bootstrapper.js";
 import type { ReactNode } from "react";
 import { createRoot } from 'react-dom/client';
-import {loadConfig, type ReysinConfig} from "../config/config-loader.js";
+import {loadConfigBrowser, type ReysinConfig} from "../config/config-loader.js";
 
 export class Reysin {
 	private container: AppContainer;
@@ -15,7 +15,7 @@ export class Reysin {
 
 	async initialize(): Promise<void> {
 		try {
-			this.config = await loadConfig();
+			this.config = await loadConfigBrowser();
 			await this.bootstrap();
 			console.log('Reysin framework initialized');
 		} catch (error) {
