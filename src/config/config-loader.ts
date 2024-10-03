@@ -48,3 +48,18 @@ export function loadConfig(): ReysinConfig {
 
 	return defaultConfig;
 }
+
+export async function loadConfigBrowser(): Promise<ReysinConfig> {
+	try {
+		const response = await fetch('/reysin.config.yaml');
+		if (!response.ok) {
+			throw new Error('Config file not found');
+		}
+		const yamlText = await response.text();
+		const userConfig = yaml.load(yamlText) as Partial<ReysinConfig>;
+		return mergeDeep(defaultConfig, userConfig) as ReysinConfig;
+	} catch (error) {
+		console.warn('Failed to load config file, using default config:', error);
+		return defaultConfig;
+	}
+}
