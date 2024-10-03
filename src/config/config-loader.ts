@@ -17,6 +17,7 @@ export interface ReysinConfig {
 	};
 	framework: {
 		appPath: string;
+		apps: string[];
 	};
 }
 
@@ -34,6 +35,7 @@ const defaultConfig: ReysinConfig = {
 	},
 	framework: {
 		appPath: "/src/apps",
+		apps: [],
 	},
 };
 
