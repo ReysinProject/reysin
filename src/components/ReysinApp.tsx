@@ -7,7 +7,7 @@ interface ReysinAppProps {
 	container: AppContainer;
 }
 
-const ReysinApp: FC<ReysinAppProps> = ({container}) => {
+export const ReysinApp: FC<ReysinAppProps> = ({container}) => {
 
 	return (
 		<Provider container={container.container}>
@@ -15,5 +15,3 @@ const ReysinApp: FC<ReysinAppProps> = ({container}) => {
 		</Provider>
 	)
 }
-
-export default ReysinApp;
