@@ -1,4 +1,4 @@
-import { type ViteDevServer, createServer } from "vite";
+import {type ViteDevServer, createServer} from "vite";
 import {loadConfig, type ReysinConfig} from "../config/config-loader.js";
 
 export async function startDevServer(): Promise<void> {

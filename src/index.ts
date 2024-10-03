@@ -1,4 +1,3 @@
-import cli from "./cli/cli.js";
 
 export { Application } from "./core/Application.js";
 export { AppContainer } from "./core/AppContainer.js";
@@ -10,5 +9,3 @@ export { injectable } from "./decorators/injectable.js";
 export { singleton } from "./decorators/singleton.js";
 export { transient } from "./decorators/transient.js";
 export { observer } from "./decorators/observer.js";
-
-cli.parse(process.argv);

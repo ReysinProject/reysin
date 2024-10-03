@@ -1,10 +1,10 @@
 {
   "name": "@reysin/project",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "reysin": "./dist/index.js"
+    "reysin": "./dist/cli.js"
   },
   "type": "module",
   "license": "MIT",
