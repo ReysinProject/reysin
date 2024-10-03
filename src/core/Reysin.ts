@@ -1,28 +1,42 @@
-import {AppContainer} from "./AppContainer.js";
-import {bootstrapApplication} from "../utils/bootstrapper.js";
-import type {ReactNode} from "react";
+import { AppContainer } from "./AppContainer.js";
+import { bootstrapApplication } from "../utils/bootstrapper.js";
+import type { ReactNode } from "react";
 import { createRoot } from 'react-dom/client';
 import {loadConfig, type ReysinConfig} from "../config/config-loader.js";
 
 export class Reysin {
 	private container: AppContainer;
-	private config: ReysinConfig
+	private config: ReysinConfig | null = null;
 
 	constructor() {
-		console.log('Reysin framework initialized');
+		console.log('Reysin framework initializing');
 		this.container = new AppContainer();
-		this.config = loadConfig();
-		this.bootstrap()
 	}
 
-	bootstrap() {
-    console.log('Reysin framework bootstrapped');
-		bootstrapApplication(this.container, "todo").then(() => {
+	async initialize(): Promise<void> {
+		try {
+			this.config = await loadConfig();
+			await this.bootstrap();
 			console.log('Reysin framework initialized');
-		})
-  }
+		} catch (error) {
+			console.error('Failed to initialize Reysin framework:', error);
+			throw error;
+		}
+	}
 
-	render(children: ReactNode) {
+	private async bootstrap(): Promise<void> {
+		if (!this.config) {
+			throw new Error('Configuration not loaded');
+		}
+		console.log('Reysin framework bootstrapping');
+		await bootstrapApplication(this.container, this.config.framework.appPath);
+		console.log('Reysin framework bootstrapped');
+	}
+
+	render(children: ReactNode): void {
+		if (!this.config) {
+			throw new Error('Reysin framework not initialized');
+		}
 		const rootElement = document.getElementById(this.config.app.rootElement);
 		if (!rootElement) {
 			throw new Error(`Root element with id "${this.config.app.rootElement}" not found`);

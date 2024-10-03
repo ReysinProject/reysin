@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import yaml from "js-yaml";
 import {mergeDeep} from "../utils/object-utils.js";
 
@@ -39,19 +37,7 @@ const defaultConfig: ReysinConfig = {
 	},
 };
 
-export function loadConfig(): ReysinConfig {
-	const configPath = path.resolve(process.cwd(), "reysin.config.yaml");
-
-	if (fs.existsSync(configPath)) {
-		const fileContents = fs.readFileSync(configPath, "utf8");
-		const userConfig = yaml.load(fileContents) as Partial<ReysinConfig>;
-		return mergeDeep(defaultConfig, userConfig) as ReysinConfig;
-	}
-
-	return defaultConfig;
-}
-
-export async function loadConfigBrowser(): Promise<ReysinConfig> {
+export async function loadConfig(): Promise<ReysinConfig> {
 	try {
 		const response = await fetch('/reysin.config.yaml');
 		if (!response.ok) {
