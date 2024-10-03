@@ -1,5 +1,5 @@
-export async function loadModules(appPath: string): Promise<any[]> {
-	const modules: any[] = [];
+export async function loadModules(appPath: string): Promise<unknown[]> {
+	const modules: unknown[] = [];
 	const moduleFiles = import.meta.glob('/src/apps/**/*.ts', { eager: false });
 
 	for (const path in moduleFiles) {

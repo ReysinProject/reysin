@@ -12,7 +12,7 @@ export async function bootstrapApplication(
 		const isInjectable = Reflect.getMetadata("custom:injectable", module);
 		if (isInjectable) {
 			const scope = Reflect.getMetadata("custom:scope", module) || "transient";
-			const binding = container.bind<any>(module);
+			const binding = container.bind(module);
 
 			if (scope === "singleton") {
 				binding.to(module).inSingletonScope();

@@ -1,18 +1,19 @@
 import type {AppContainer} from "./AppContainer.js";
 
 export class Router {
-	private routes: Map<string, any> = new Map();
+	private routes: Map<string, unknown> = new Map();
 	// private container: Container;
 
 	constructor(_container: AppContainer) {
 		// this.container = container;
+		return
 	}
 
-	addRoute(path: string, component: any): void {
+	addRoute(path: string, component: unknown): void {
 		this.routes.set(path, component);
 	}
 
-	getRoutes(): Map<string, any> {
+	getRoutes(): Map<string, unknown> {
 		return this.routes;
 	}
 
