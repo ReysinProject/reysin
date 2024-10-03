@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
-import {mergeDeep} from "../utils/object-utils.js";
 
 export interface ReysinConfig {
 	app: {
@@ -45,7 +44,7 @@ export function loadConfig(): ReysinConfig {
 	if (fs.existsSync(configPath)) {
 		const fileContents = fs.readFileSync(configPath, "utf8");
 		const userConfig = yaml.load(fileContents) as Partial<ReysinConfig>;
-		return mergeDeep(defaultConfig, userConfig) as ReysinConfig;
+		return { ...defaultConfig, ...userConfig };
 	}
 
 	return defaultConfig;
@@ -53,15 +52,15 @@ export function loadConfig(): ReysinConfig {
 
 export async function loadConfigBrowser(): Promise<ReysinConfig> {
 	try {
-		const response = await fetch('/reysin.config.yaml');
+		const response = await fetch("/reysin.config.yaml");
 		if (!response.ok) {
-			throw new Error('Config file not found');
+			throw new Error("Config file not found");
 		}
 		const yamlText = await response.text();
 		const userConfig = yaml.load(yamlText) as Partial<ReysinConfig>;
-		return mergeDeep(defaultConfig, userConfig) as ReysinConfig;
+		return { ...defaultConfig, ...userConfig };
 	} catch (error) {
-		console.warn('Failed to load config file, using default config:', error);
+		console.warn("Failed to load config file, using default config:", error);
 		return defaultConfig;
 	}
 }

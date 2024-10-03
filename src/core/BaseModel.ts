@@ -5,7 +5,7 @@ export abstract class BaseModel<T extends z.ZodType> {
 	protected schema: T;
 	protected data: z.infer<T>;
 
-	constructor(schema: T, initialData?: Partial<z.infer<T>>) {
+	protected constructor(schema: T, initialData?: Partial<z.infer<T>>) {
 		this.schema = schema;
 		this.data = this.schema.parse(initialData || {});
 		makeAutoObservable(this);
@@ -45,17 +45,6 @@ export abstract class BaseModel<T extends z.ZodType> {
 		this.data = this.schema.parse(data || {});
 	}
 
-	public static fromJSON<M extends BaseModel<any>>(
-		this: new (
-			schema: any,
-		) => M,
-		data: any,
-	): M {
-		const instance = new this(z.any());
-		instance.update(data);
-		return instance;
-	}
-
 	protected get<K extends keyof z.infer<T>>(key: K): z.infer<T>[K] {
 		return this.data[key];
 	}
@@ -65,5 +54,15 @@ export abstract class BaseModel<T extends z.ZodType> {
 		value: z.infer<T>[K],
 	): void {
 		this.update({ [key]: value } as Partial<z.infer<T>>);
+	}
+
+	public static fromJSON<S extends z.ZodType, M extends BaseModel<S>>(
+		ModelClass: new (schema: S) => M,
+		schema: S,
+		data: z.infer<S>,
+	): M {
+		const instance = new ModelClass(schema);
+		instance.update(data);
+		return instance;
 	}
 }

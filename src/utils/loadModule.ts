@@ -1,12 +1,29 @@
-export async function loadModules(appPath: string): Promise<unknown[]> {
-	const modules: unknown[] = [];
-	const moduleFiles = import.meta.glob('/src/apps/**/*.ts', { eager: false });
+import "reflect-metadata";
+
+export interface Constructor<T = unknown> {
+	new (...args: unknown[]): T;
+}
+
+export interface ModuleType extends Constructor {
+	[key: string]: unknown;
+}
+
+export function isModuleType(obj: unknown): obj is ModuleType {
+	return typeof obj === "function" && obj.prototype !== undefined;
+}
+
+export async function loadModules(appPath: string): Promise<ModuleType[]> {
+	const modules: ModuleType[] = [];
+	const moduleFiles = import.meta.glob("/src/apps/**/*.ts", { eager: false });
 
 	for (const path in moduleFiles) {
 		if (path.startsWith(appPath)) {
 			const module = await moduleFiles[path]();
-			if (typeof module === 'object' && module !== null) {
-				modules.push(...Object.values(module));
+			if (typeof module === "object" && module !== null) {
+				const moduleValues = Object.values(module).filter(isModuleType);
+				for (const m of moduleValues) {
+					modules.push(m);
+				}
 			}
 		}
 	}
