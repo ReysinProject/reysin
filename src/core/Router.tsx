@@ -22,7 +22,7 @@ export class Router {
 		console.log(Module);
 		console.log(definition);
 		const ComponentWrapper: FC = () => {
-			const ModuleComponent = Module as unknown as ComponentType;
+			const ModuleComponent = Module.render as unknown as ComponentType;
 			return <ModuleComponent />;
 		};
 
