@@ -1,6 +1,6 @@
 {
 	"name": "@reysin/project",
-	"version": "1.0.67",
+	"version": "1.0.68",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"bin": {
@@ -15,8 +15,10 @@
 		"fix": "pnpm biome check --fix ./src && tsc --noEmit"
 	},
 	"dependencies": {
+		"@tanstack/query-core": "^5.59.0",
 		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^22.7.4",
+		"axios": "^1.7.7",
 		"commander": "^12.1.0",
 		"inversify": "^6.0.1",
 		"inversify-react": "^1.1.1",

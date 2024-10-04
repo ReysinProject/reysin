@@ -6,8 +6,7 @@ export { injectable } from "./decorators/injectable.js";
 export { singleton } from "./decorators/singleton.js";
 export { transient } from "./decorators/transient.js";
 export { observer } from "./decorators/observer.js";
-
-// Already used
 export { AppContainer } from "./core/AppContainer.js";
 export { Reysin } from "./core/Reysin.js";
 export { ReysinApp } from "./components/ReysinApp.js";
+export { Query } from "./core/request/query.js";
