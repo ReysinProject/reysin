@@ -33,7 +33,6 @@ export async function bootstrapApplication(
 			"custom:route",
 			module,
 		);
-		console.log(routeDefinition);
 		if (routeDefinition) {
 			router.addRoute(
 				routeDefinition.path,

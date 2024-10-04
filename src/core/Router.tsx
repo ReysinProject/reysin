@@ -17,9 +17,6 @@ export class Router {
 		Module: ComponentType,
 		definition: RouteDefinition,
 	): void {
-		console.log(path);
-		console.log(Module);
-		console.log(definition);
 		const ComponentWrapper: FC = () => {
 			return <Module />;
 		};

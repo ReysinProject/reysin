@@ -19,14 +19,8 @@ const RouteMetaUpdater: FC<ReysinAppProps> = ({ container }) => {
 };
 
 export const ReysinApp: FC<ReysinAppProps> = ({ container }) => {
-	console.log("Rendering ReysinApp with container: ", container.container.id);
-	console.log(container);
 	const router = container.get<Router>(Router);
 	const routes = router.getRoutes();
-
-	console.log(routes);
-	console.log(router.getRoutes());
-	console.log(router);
 
 	return (
 		<Provider container={container.container}>
