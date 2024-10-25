@@ -1,11 +1,11 @@
 import type React from "react";
 import type { ReactNode } from "react";
 import { createRoot } from "react-dom/client";
+import { bootstrapApplication } from "../utils/bootstrapper.js";
 import {
 	type ReysinConfig,
 	loadConfigBrowser,
-} from "../config/config-loader.js";
-import { bootstrapApplication } from "../utils/bootstrapper.js";
+} from "../utils/config-loader.js";
 import { AppContainer } from "./AppContainer.js";
 import { Router } from "./Router.js";
 
