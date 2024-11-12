@@ -1,0 +1,24 @@
+{
+	"name": "tests",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "reysin dev",
+		"build": "reysin build",
+		"test": "pnpm biome check ./src && tsc --noEmit",
+		"fix": "pnpm biome check --fix ./src && tsc --noEmit"
+	},
+	"dependencies": {
+		"mobx": "^6.13.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.26.2",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.3",
+		"@types/jest": "^29.5.13",
+		"@types/react": "^18.3.11",
+		"@types/react-dom": "^18.3.0",
+		"typescript": "^4.9.5"
+	}
+}
