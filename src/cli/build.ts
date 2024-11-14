@@ -1,5 +1,5 @@
 import { build } from "vite";
-import { loadConfig } from "../utils/config-loader.js";
+import { loadConfig } from "../config/config-loader.js";
 
 export async function buildApp() {
 	const config = loadConfig();
@@ -7,10 +7,10 @@ export async function buildApp() {
 	await build({
 		configFile: false,
 		root: process.cwd(),
-		base: config.vite.base,
+		base: config.server.base,
 		build: {
-			outDir: config.vite.outDir,
-			assetsDir: config.vite.assetsDir,
+			outDir: config.server.outDir,
+			assetsDir: config.server.assetsDir,
 		},
 	});
 

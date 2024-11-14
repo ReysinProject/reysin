@@ -1,37 +1,42 @@
 import consola from "consola";
 import { type ViteDevServer, createServer } from "vite";
-import { type ReysinConfig, loadConfig } from "../utils/config-loader.js";
+import { loadConfig } from "../config/config-loader.js";
+import type { ReysinConfig } from "../config/interfaces.js";
+import { getBuildConfig } from "./config/build.js";
+import { getPluginsConfig } from "./config/plugins.js";
+import { getServerConfig } from "./config/server.js";
+import { getServerUrls } from "./utils/getServerUrls.js";
 
 export async function startDevServer(): Promise<void> {
-	consola.start("Starting get the config");
-	const config: ReysinConfig = loadConfig();
-	consola.success("Config loaded");
-
-	let server: ViteDevServer;
-
-	consola.start("Starting dev server");
 	try {
-		server = await createServer({
+		consola.start("Loading configuration...");
+		const config: ReysinConfig = loadConfig();
+		consola.success("Configuration loaded successfully");
+
+		consola.start("Creating dev server...");
+		const server: ViteDevServer = await createServer({
 			configFile: false,
 			root: process.cwd(),
-			server: {
-				port: config.vite.port,
-			},
-			base: config.vite.base,
-			build: {
-				outDir: config.vite.outDir,
-				assetsDir: config.vite.assetsDir,
+			server: getServerConfig(config),
+			base: config.server.base || "/",
+			build: getBuildConfig(config),
+			plugins: getPluginsConfig(config),
+			optimizeDeps: {
+				include: ["consola"],
+				exclude: [],
 			},
 		});
 
 		await server.listen();
+
+		const urls = getServerUrls(server, config);
+
 		consola.success("Dev server started successfully");
-		consola.box([
-			"Dev server started successfully",
-			`started at http://localhost:${config.vite.port}`,
-		]);
+		consola.box(
+			`🚀 Server running at:\n  ➜ Local:   ${urls.local}\n  ➜ Network: ${urls.network[0] || "unavailable"}`,
+		);
 	} catch (error) {
-		consola.error("Dev server failed to start");
+		consola.error("Failed to start dev server:", error);
 		consola.error(
 			"If the issue persists, please report it at https://github.com/ReysinProject/reysin/issues",
 		);

@@ -1,7 +1,6 @@
 app:
   title: "MVVM Framework Example"
   description: "Modular MVVM Framework Example"
-  rootElement: "root"
 
 vite:
   port: 3005
