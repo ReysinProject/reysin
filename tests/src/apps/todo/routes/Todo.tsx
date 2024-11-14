@@ -1,9 +1,7 @@
 import {Route} from "@reysin/project"
 import React from "react";
 
-class TodoHomeRoute extends Route {
-    loader() {}
-
+export default class TodoHomeRoute extends Route {
     component() {
         return (
             <p>
