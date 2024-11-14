@@ -1,13 +1,16 @@
-import {RouteModule} from "./interfaces.js";
+import {RouteModule} from "../interfaces/routes.js";
 
 export async function loadRoutes() {
-	const routeFiles = import.meta.glob("/src/apps/**/routes/**.{ts,tsx}");
-	const routes = [];
+	const routeFiles = import.meta.glob("/src/apps/**/router.{ts,tsx}");
+	let routes = {};
 
 	for (const path in routeFiles) {
 		const module = await routeFiles[path]();
-		const routeInstance = new (module as RouteModule).default();
-		routes.push(routeInstance.get_config());
+		const routeInstance = (module as RouteModule).default;
+		routes = {
+			...routes,
+			...routeInstance
+		}
 	}
 
 	return routes;

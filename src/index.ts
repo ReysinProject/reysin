@@ -1,1 +1,1 @@
-export { Route } from "./router/Route.js";
+export { defineRoutes } from "./router/defineRoutes.js"

@@ -1,17 +1,21 @@
-import type { ReysinConfig } from "../../config/interfaces.js";
 import createIndexPlugin from "../../plugins/createIndexPlugin.js";
 
-export function getPluginsConfig(config: ReysinConfig) {
+export function getPluginsConfig() {
 	return [
 		createIndexPlugin({
-			title: config.app.title || "Reysin App",
-			meta: [
-				{
-					name: "description",
-					content: config.app.description || "Reysin application",
+			pages: {
+				"/": {
+					title: "Home Page",
+					meta: [{ name: "description", content: "This is the home page" }],
+					layout: "path/to/layout.html",
 				},
-			],
-			scripts: [{ src: "/src/main.ts", type: "module" }],
+				"/about": {
+					title: "About Page",
+					meta: [{ name: "description", content: "This is the about page" }],
+					layout: "path/to/layout.html",
+				},
+			},
+			defaultLayout: "path/to/default-layout.html",
 		}),
 	];
 }

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
-import type { ReysinConfig } from "./interfaces.js";
+import type { ReysinConfig } from "../interfaces/config.js";
 import { defaultReysinConfig } from "./objects.js";
 
 export function loadConfig(): ReysinConfig {

@@ -1,6 +1,6 @@
 app:
-  title: "MVVM Framework Example"
-  description: "Modular MVVM Framework Example"
+  title: "Reysin Test"
+  description: "Reysin example project"
 
 vite:
   port: 3005

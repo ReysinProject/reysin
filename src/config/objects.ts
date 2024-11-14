@@ -1,4 +1,4 @@
-import type { ReysinConfig } from "./interfaces.js";
+import type { ReysinConfig } from "../interfaces/config.js";
 
 export const defaultReysinConfig: ReysinConfig = {
 	app: {

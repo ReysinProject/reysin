@@ -1,7 +1,7 @@
 import consola from "consola";
 import { type ViteDevServer, createServer } from "vite";
 import { loadConfig } from "../config/config-loader.js";
-import type { ReysinConfig } from "../config/interfaces.js";
+import type { ReysinConfig } from "../interfaces/config.js";
 import { getBuildConfig } from "./config/build.js";
 import { getPluginsConfig } from "./config/plugins.js";
 import { getServerConfig } from "./config/server.js";
@@ -20,7 +20,7 @@ export async function startDevServer(): Promise<void> {
 			server: getServerConfig(config),
 			base: config.server.base || "/",
 			build: getBuildConfig(config),
-			plugins: getPluginsConfig(config),
+			plugins: getPluginsConfig(),
 			optimizeDeps: {
 				include: ["consola"],
 				exclude: [],

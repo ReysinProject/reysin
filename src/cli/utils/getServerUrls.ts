@@ -1,5 +1,5 @@
 import type { ViteDevServer } from "vite";
-import type { ReysinConfig } from "../../config/interfaces.js";
+import type { ReysinConfig } from "../../interfaces/config.js";
 
 export function getServerUrls(server: ViteDevServer, config: ReysinConfig) {
 	const networkUrls = server.resolvedUrls?.network || [];

@@ -24,7 +24,7 @@ program
 		try {
 			await buildApp();
 		} catch (error) {
-			console.error("Error building app:", error);
+			console.error("Error building client:", error);
 			process.exit(1);
 		}
 	});

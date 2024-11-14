@@ -1,4 +1,4 @@
-import type { ReysinConfig } from "../../config/interfaces.js";
+import type { ReysinConfig } from "../../interfaces/config.js";
 
 export function getServerConfig(config: ReysinConfig) {
 	return {
