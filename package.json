@@ -12,34 +12,27 @@
 		"build": "tsc",
 		"prepublishOnly": "npm run build",
 		"test": "pnpm biome check ./src && tsc --noEmit",
-		"fix": "pnpm biome check --fix ./src && tsc --noEmit"
+		"fix": "pnpm biome check --fix ./src && tsc --noEmit",
+		"build_for_tests": "pnpm build && cd tests && pnpm update"
 	},
 	"dependencies": {
-		"@tanstack/query-core": "^5.59.0",
+		"@types/express": "^5.0.0",
 		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^22.7.4",
-		"axios": "^1.7.7",
 		"commander": "^12.1.0",
-		"inversify": "^6.0.1",
-		"inversify-react": "^1.1.1",
+		"consola": "^3.2.3",
+		"express": "^4.21.1",
 		"js-yaml": "^4.1.0",
-		"mobx": "^6.6.0",
-		"mobx-react-lite": "^3.4.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.3.1",
-		"react-helmet-async": "^2.0.5",
-		"react-router-dom": "^6.3.0",
-		"reflect-metadata": "^0.1.13",
-		"standard-version": "^9.5.0",
-		"tslib": "^2.7.0",
-		"vite": "^5.4.8",
-		"zod": "^3.23.8"
+		"react-router-dom": "^6.26.2",
+		"vite": "^5.4.8"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.3",
 		"@types/react": "^18.0.15",
 		"@types/react-dom": "^18.3.0",
-		"typescript": "5.7.0-dev.20241002"
+		"typescript": "^5.6.3"
 	},
 	"peerDependencies": {
 		"react": "^18.2.0",

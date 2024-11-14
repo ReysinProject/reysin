@@ -1,0 +1,23 @@
+{
+	"name": "tests",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "reysin dev",
+		"build": "reysin build",
+		"test": "pnpm biome check ./src && tsc --noEmit",
+		"fix": "pnpm biome check --fix ./src && tsc --noEmit"
+	},
+	"dependencies": {
+		"ofetch": "^1.4.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.28.0"
+	},
+	"devDependencies": {
+		"@reysin/project": "file:..",
+		"@types/jest": "^29.5.14",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"typescript": "^4.9.5"
+	}
+}

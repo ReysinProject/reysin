@@ -1,0 +1,14 @@
+app:
+  title: "Reysin Test"
+  description: "Reysin example project"
+
+vite:
+  port: 3005
+  base: "/"
+  outDir: "dist"
+  assetsDir: "assets"
+
+framework:
+  apps:
+    - test
+  apiPath: "/src/api"
