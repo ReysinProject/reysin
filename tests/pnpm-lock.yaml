@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       mobx:
-        specifier: ^6.13.3
+        specifier: ^6.13.5
         version: 6.13.5
       react:
         specifier: ^18.3.1
@@ -18,7 +18,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-router-dom:
-        specifier: ^6.26.2
+        specifier: ^6.28.0
         version: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod:
         specifier: ^3.23.8
@@ -27,14 +27,17 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.3
         version: 1.9.3
+      '@reysin/project':
+        specifier: file:../src
+        version: src@file:../src
       '@types/jest':
-        specifier: ^29.5.13
+        specifier: ^29.5.14
         version: 29.5.14
       '@types/react':
-        specifier: ^18.3.11
+        specifier: ^18.3.12
         version: 18.3.12
       '@types/react-dom':
-        specifier: ^18.3.0
+        specifier: ^18.3.1
         version: 18.3.1
       typescript:
         specifier: ^4.9.5
@@ -288,6 +291,9 @@ packages:
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+
+  src@file:../src:
+    resolution: {directory: ../src, type: directory}
 
   stack-utils@2.0.6:
     resolution: {integrity: sha512-XlkWvfIm6RmsWtNJx+uqtKLS8eqFbxUg0ZzLXqY0caEy9l7hruX8IpiDnjsLavoBgqCCR71TqWO8MaXYheJ3RQ==}
@@ -552,6 +558,8 @@ snapshots:
       loose-envify: 1.4.0
 
   slash@3.0.0: {}
+
+  src@file:../src: {}
 
   stack-utils@2.0.6:
     dependencies:
