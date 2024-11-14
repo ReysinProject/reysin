@@ -1,9 +1,12 @@
 import {defineRoutes} from "@reysin/project";
-import React from "react";
+import {lazy} from "react";
+import {ofetch} from "ofetch";
+
 
 export default defineRoutes([
   {
-    path: "/",
-    element: <div>Hello world!</div>,
+    path: '/',
+    component: lazy(() => import('./pages/Home')),
+    prefetch: () => ofetch('/api/home-data')
   },
 ])

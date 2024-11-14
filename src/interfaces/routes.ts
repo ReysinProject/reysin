@@ -1,7 +1,12 @@
-import {RouteObject as RouteType} from "react-router-dom";
+import type React from "react";
 
-export { RouteType }
+export interface RouteObject {
+	path: string;
+	component: React.LazyExoticComponent<React.ComponentType<unknown>>;
+	layout?: React.ComponentType;
+	prefetch?: () => Promise<unknown>;
+}
 
 export type RouteModule = {
-  default: RouteType[];
+	default: RouteObject[];
 };

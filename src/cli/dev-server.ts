@@ -22,7 +22,7 @@ export async function startDevServer(): Promise<void> {
 			build: getBuildConfig(config),
 			plugins: getPluginsConfig(config),
 			optimizeDeps: {
-				include: ["consola"],
+				include: ["consola", "@reysin/project"],
 				exclude: [],
 			},
 		});
