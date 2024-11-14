@@ -7,13 +7,7 @@ interface AppRouterProps {
 }
 
 function Layout({ children }: { children: ReactNode }) {
-	return (
-		<div className="layout">
-			<header>My App</header>
-			<main>{children}</main>
-			<footer>© 2023</footer>
-		</div>
-	);
+	return children
 }
 
 export function RenderApp(props: AppRouterProps) {
