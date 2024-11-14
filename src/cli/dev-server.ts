@@ -20,7 +20,7 @@ export async function startDevServer(): Promise<void> {
 			server: getServerConfig(config),
 			base: config.server.base || "/",
 			build: getBuildConfig(config),
-			plugins: getPluginsConfig(),
+			plugins: getPluginsConfig(config),
 			optimizeDeps: {
 				include: ["consola"],
 				exclude: [],
