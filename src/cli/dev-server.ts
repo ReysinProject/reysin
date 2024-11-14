@@ -2,6 +2,8 @@ import consola from "consola";
 import { type ViteDevServer, createServer } from "vite";
 import { loadConfig } from "../config/config-loader.js";
 import type { ReysinConfig } from "../config/interfaces.js";
+import { loadRoutes } from "../router/loadRoutes.js";
+import { createSSRMiddleware } from "../ssr/middleware.js";
 import { getBuildConfig } from "./config/build.js";
 import { getPluginsConfig } from "./config/plugins.js";
 import { getServerConfig } from "./config/server.js";
@@ -12,6 +14,10 @@ export async function startDevServer(): Promise<void> {
 		consola.start("Loading configuration...");
 		const config: ReysinConfig = loadConfig();
 		consola.success("Configuration loaded successfully");
+
+		consola.start("Loading routes...");
+		const routes = await loadRoutes();
+		consola.success(`Loaded ${routes.length} routes`);
 
 		consola.start("Creating dev server...");
 		const server: ViteDevServer = await createServer({
@@ -26,6 +32,8 @@ export async function startDevServer(): Promise<void> {
 				exclude: [],
 			},
 		});
+
+		server.middlewares.use(createSSRMiddleware(routes));
 
 		await server.listen();
 
