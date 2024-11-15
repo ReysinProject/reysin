@@ -8,6 +8,15 @@
   <br/><br/>
 </p>
 
+````
+````
+
+<p align="center">⚠️ Please note that the package is in the experimental development phase. You may use it at your own risk.  ⚠️</p>
+
+````
+````
+
+
 ## Table of contents
 
 - [🚀 Getting Started](#-getting-started)
@@ -83,6 +92,29 @@ pnpm create @reysin/project@latest
 Visit the documentation website: [Official Documentation](https://reysinproject.github.io/documentation/).
 
 ## 🛣️ Roadmap
+
+It's the start of the project the roadmap is more like an list of possible implementation we like to have
+
+- Configure Vite for Server-Side Rendering (SSR)
+- Set up SEO and meta tags
+- Implement Model, ViewModel, and View components
+- Establish data flow and binding between layers
+- Integrate a state management solution
+- Manage global and local state in the MVVM structure
+- Implement client-side and server-side routing
+- Handle dynamic routes and SEO considerations
+- Design API layer for fetching data
+- Implement caching and optimization strategies
+- Create a plugin architecture for extending framework functionality
+- Allow customization and integration of third-party plugins
+- Integrate Tailwind CSS or a similar utility-first CSS framework
+- Provide theming capabilities and style customization
+- Set up unit and integration tests for Models, ViewModels, and Views
+- Ensure comprehensive test coverage, including SSR and routing
+- Generate comprehensive documentation for the framework
+- Provide examples, guides, and tooling for seamless developer onboarding
+- Automate build, testing, and deployment processes
+- Ensure cross-browser and cross-device compatibility
 
 ## ❤️ Contribute
 **New contributors welcome!** Check out our [Contributors Guide](CONTRIBUTING.md) for help getting started.
