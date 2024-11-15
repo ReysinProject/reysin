@@ -10,6 +10,20 @@
 
 ## Table of contents
 
+- [🚀 Getting Started](#-getting-started)
+- [🧩 What it does ?](#-what-it-does-)
+    - [📱 Declarative UI Binding](#-declarative-ui-binding)
+    - [🔄 Two-Way Data Flow](#-two-way-data-flow)
+    - [🏗 Clear Architecture Separation](#-clear-architecture-separation)
+    - [🎯 For Developers](#-for-developers)
+        - [📈 Increased Productivity](#-increased-productivity)
+        - [🧪 Better Testing](#-better-testing)
+        - [⚖️ Enhanced Maintainability](#️-enhanced-maintainability)
+- [📖 Documentation](#-documentation)
+- [🛣️ Roadmap](#️-roadmap)
+- [❤️ Contribute](#️-contribute)
+- [🏠 Local Development](#-local-development)
+
 ## 🚀 Getting Started
 
 The **recommanded** way to create a new project with reysin is by running the following command :
