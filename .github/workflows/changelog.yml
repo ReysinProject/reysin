@@ -11,38 +11,35 @@ on:
     types:
       - created
 
+permissions:
+  contents: write
+
 jobs:
   generate-changelog:
     name: Generate Changelog
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Fetch all tags
       - name: Fetch all tags
         run: git fetch --tags
 
-      # Extract the latest tag or use a default value
       - name: Get latest tag
         id: get_tag
         run: |
           tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
           echo "tag=$tag" >> $GITHUB_ENV
 
-      # Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # Install auto-changelog dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Run the changelog generation
       - name: Generate Changelog
         uses: ardalanamini/auto-changelog@v4
         id: changelog
@@ -67,7 +64,6 @@ jobs:
           include-compare-link: true
           semver: true
 
-      # Commit and push the changelog
       - name: Commit and Push Changelog
         run: |
           git config --local user.name "GitHub Actions"
