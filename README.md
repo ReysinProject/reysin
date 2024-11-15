@@ -20,6 +20,50 @@ pnpm create @reysin/project@latest
 
 ## 🧩 What it does ?
 
+### 📱 Declarative UI Binding
+
+- Automatic UI updates through reactive data binding
+- Seamless synchronization between View and ViewModel
+- Reduced boilerplate code for state management
+- Built-in error boundary handling for UI components
+
+### 🔄 Two-Way Data Flow
+
+- Bidirectional data binding between View and ViewModel
+- Automatic state updates without manual event handling
+- Form handling with built-in validation support
+- Real-time UI updates with optimized performance
+
+### 🏗 Clear Architecture Separation
+
+- Distinct separation between business logic and UI components
+- Modular component structure for better code organization
+- Improved code reusability across components
+- Clear responsibilities for each architectural layer
+
+### 🎯 For Developers
+
+#### 📈 Increased Productivity
+
+- Reduced development time through clear architectural patterns
+- Built-in state management solutions
+- Reusable ViewModels across different views
+- Comprehensive debugging tools and dev extensions
+
+#### 🧪 Better Testing
+
+- Isolated business logic for easier unit testing
+- Mockable ViewModels for component testing
+- Reduced test complexity through separation of concerns
+- Built-in testing utilities and helpers
+
+#### ⚖️ Enhanced Maintainability
+
+- Clear code organization and structure
+- Reduced coupling between components
+- Easier refactoring and updates
+- Self-documenting architecture
+
 ## 📖 Documentation
 
 Visit the documentation website: [Official Documentation](https://reysinproject.github.io/documentation/).
