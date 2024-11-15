@@ -1,38 +1,33 @@
 ---
-name: Bug report
+name: 🐛 Bug Report
 about: Create a report to help us improve
-title: ''
-labels: ''
+title: '[BUG] '
+labels: 'bug'
 assignees: ''
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Bug Description
+<!-- A clear and concise description of the bug -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### Steps to Reproduce
+1.
+2.
+3.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Expected Behavior
+<!-- Description of what you expected to happen -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Current Behavior
+<!-- Description of what is actually happening -->
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Screenshots
+<!-- If applicable, add screenshots to help explain your problem -->
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+### Environment
+- OS: [e.g. Windows 10]
+- Browser: [e.g. Chrome 98]
+- Framework Version: [e.g. 1.0.0]
+- Node Version: [e.g. 16.14.0]
 
-**Additional context**
-Add any other context about the problem here.
+### Additional Context
+<!-- Add any other context about the problem here -->
