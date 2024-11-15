@@ -1,0 +1,77 @@
+name: Generate Changelog
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+permissions:
+  contents: write
+
+jobs:
+  generate-changelog:
+    name: Generate Changelog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch all tags
+        run: git fetch --tags
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "tag=$tag" >> $GITHUB_ENV
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate Changelog
+        uses: ardalanamini/auto-changelog@v4
+        id: changelog
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-types: |
+            feat    : New Features
+            fix     : Bug Fixes
+            build   : Build System & Dependencies
+            perf    : Performance Improvements
+            docs    : Documentation
+            test    : Tests
+            refactor: Refactors
+            chore   : Chores
+            ci      : CI
+            style   : Code Style
+            revert  : Reverts
+          default-commit-type: Other Changes
+          release-name: ${{ env.tag }}
+          mention-authors: true
+          include-pr-links: true
+          include-compare-link: true
+          semver: true
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Ensure on the develop branch
+        run: |
+          git switch develop || git checkout -b develop
+
+      - name: Commit and Push Changelog
+        run: |
+          git add CHANGELOG.md
+          git commit -m "docs: update changelog [skip ci]" || echo "No changes to commit"
+          git push origin develop
