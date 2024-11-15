@@ -3,10 +3,10 @@ name: Generate Changelog
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
-      - main
+      - develop
 
 permissions:
   contents: write
@@ -66,20 +66,12 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Ensure on the main branch
+      - name: Ensure on the develop branch
         run: |
-          git switch main || git checkout -b main
-
-      - name: Ignore untracked files
-        run: git clean -fd
-
-      - name: Pull changes from remote
-        run: |
-          git fetch origin
-          git pull origin main --rebase
+          git switch develop || git checkout -b develop
 
       - name: Commit and Push Changelog
         run: |
           git add CHANGELOG.md
           git commit -m "docs: update changelog [skip ci]" || echo "No changes to commit"
-          git push origin main
+          git push origin develop
