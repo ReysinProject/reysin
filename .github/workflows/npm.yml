@@ -6,10 +6,9 @@ on:
       - main
 
 jobs:
-  release:
-    if:
-      github.event.head_commit.message != 'chore(release): version bump'
+  build-and-publish:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,20 +27,24 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Configure Git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Get version from package.json
-        id: package-version
-        run: echo "::set-output name=version::$(node -p "require('./package.json').version")"
-
       - name: Build the project
         run: pnpm build
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
 
       - name: Publish to npm
         run: |
