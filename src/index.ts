@@ -1,3 +1,3 @@
 export { defineRoutes } from "./router/defineRoutes.js";
 export { Reysin } from "./client/Reysin.js";
-export {service} from "./services/decorators.js"
+export { Service } from "./services/Service.js";
