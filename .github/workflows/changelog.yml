@@ -22,6 +22,15 @@ jobs:
         uses: actions/checkout@v3
 
 
+      - name: Fetch all tags
+        run: git fetch --tags
+
+
+      - name: Get latest tag
+        id: get_tag
+        run: echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -50,11 +59,12 @@ jobs:
             style   : Code Style
             revert  : Reverts
           default-commit-type: Other Changes
-          release-name: auto
+          release-name: ${{ env.tag }}
           mention-authors: true
           include-pr-links: true
           include-compare-link: true
           semver: true
+
 
       - name: Commit and Push Changelog
         run: |
