@@ -31,11 +31,24 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build the project
         run: pnpm build
+
+      - name: Increment version
+        run: |
+          npm version patch
+          git push
+          git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get version from package.json
         id: package-version
@@ -52,12 +65,9 @@ jobs:
           generate_release_notes: true
 
       - name: Publish to npm
+        if: success()
         run: |
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            npm config set access public
-            npm publish --access public
-          else
-            echo "Skipping npm publish. Not on main branch."
-          fi
+          npm config set access public
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
